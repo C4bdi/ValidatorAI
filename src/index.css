@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 100% 98%;
+    --foreground: 224 71% 4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 4%;
+
+    --primary: 222 80% 50%;
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 220 40% 40%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 8% 46%;
+
+    --accent: 220 14% 96%;
+    --accent-foreground: 220 70% 50%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 98%;
+
+    --positive: 142 76% 36%;
+    --positive-foreground: 210 20% 98%;
+
+    --negative: 0 84% 60%;
+    --negative-foreground: 210 20% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 71% 4%;
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background-color: #f5f8ff;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white bg-opacity-100 border border-gray-100 shadow-sm;
+  }
+  
+  .category-button {
+    @apply relative py-6 px-4 rounded-md bg-white border border-gray-100 
+    shadow-sm transition-all duration-200 hover:shadow hover:border-primary hover:border-opacity-30
+    focus:outline-none focus:ring-1 focus:ring-primary focus:ring-opacity-50
+    flex flex-col items-center justify-center;
+  }
+
+  .category-button.active {
+    @apply border-primary border-opacity-50 shadow;
+  }
+  
+  .slider-track {
+    @apply h-1 rounded-full bg-gray-200 relative overflow-hidden;
+  }
+  
+  .slider-thumb {
+    @apply h-4 w-4 rounded-full bg-primary shadow-sm border border-white 
+    transition-transform duration-150 focus:outline-none focus:ring-1 focus:ring-primary focus:ring-opacity-50;
+  }
+
+  /* Updated Analysis Result Styles */
+  .analysis-result-card {
+    @apply rounded-xl p-8 transition-all duration-500 animate-scale-in shadow-md border-2 border-gray-200;
+    background-color: #ffffff;
+  }
+  
+  .positive-bg {
+    @apply border-2 border-green-300;
+    background-color: #ffffff;
+  }
+  
+  .negative-bg {
+    @apply border-2 border-red-300;
+    background-color: #ffffff;
+  }
+
+  .verdict-badge {
+    @apply inline-block text-white text-lg font-bold py-2 px-6 rounded-full shadow-md mx-auto;
+  }
+
+  .positive-verdict {
+    @apply bg-gradient-to-r from-green-500 to-green-600;
+  }
+
+  .negative-verdict {
+    @apply bg-gradient-to-r from-red-500 to-red-600;
+  }
+
+  .stats-container {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-4 justify-center items-center max-w-4xl mx-auto;
+  }
+
+  .stat-box {
+    @apply bg-white rounded-lg p-4 flex flex-col items-center justify-center shadow-sm 
+    border border-gray-100 transition-all duration-300 hover:shadow-md w-full;
+  }
+
+  .stat-label {
+    @apply text-sm font-medium text-secondary mb-1;
+  }
+
+  .stat-value {
+    @apply text-xl font-bold text-primary;
+  }
+
+  .analysis-sections {
+    @apply grid grid-cols-1 gap-6 max-w-4xl mx-auto;
+  }
+
+  .analysis-section {
+    @apply backdrop-blur-sm rounded-lg p-5 shadow-sm border-2 border-gray-200 w-full;
+    background-color: #ffffff;
+  }
+
+  .section-title {
+    @apply text-lg font-semibold text-secondary mb-3 border-b pb-2;
+  }
+
+  .section-content {
+    @apply space-y-3;
+  }
+
+  .analysis-item {
+    @apply flex items-start p-3 rounded-md;
+  }
+
+  .risk-item {
+    @apply border-2 border-red-200;
+    background-color: #ffffff;
+  }
+
+  .opportunity-item {
+    @apply border-2 border-green-200;
+    background-color: #ffffff;
+  }
+
+  .item-icon {
+    @apply mr-2 flex-shrink-0 mt-0.5;
+  }
+
+  .tech-requirements {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-3 max-w-4xl mx-auto;
+  }
+
+  .tech-requirement {
+    @apply p-3 rounded-md shadow-sm border-2 border-gray-200 text-sm hover:shadow-md
+    transition-all duration-200;
+    background-color: #ffffff;
+  }
+
+  .phases-container {
+    @apply space-y-4;
+  }
+
+  .phase-card {
+    @apply backdrop-blur-sm rounded-md p-4 shadow-sm border-2 border-gray-200
+    transition-all duration-200 hover:shadow-md;
+    background-color: #ffffff;
+  }
+
+  .phase-title {
+    @apply font-medium text-primary border-b pb-2;
+  }
+
+  .phase-time {
+    @apply text-sm font-normal text-muted-foreground;
+  }
+
+  .phase-tasks {
+    @apply mt-3 grid grid-cols-1 md:grid-cols-3 gap-2;
+  }
+
+  .phase-task {
+    @apply text-sm py-2 px-3 rounded-md border border-gray-200 transition-all
+    duration-200 hover:bg-gray-100;
+    background-color: #ffffff;
+  }
+
+  .animate-enter {
+    @apply animate-slide-up opacity-0;
+    animation-fill-mode: forwards;
+    animation-delay: calc(var(--index) * 100ms);
+  }
+}
+
+.grid-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
